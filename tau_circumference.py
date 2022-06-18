@@ -6,21 +6,36 @@
 #     with inputted radius
 
 
-import constants
+import math
+
+
+def rounder(pass_by_reference, decimals_number):
+    # function adds 1, by reference
+
+    ten_times = 10**decimals_number
+    pass_by_reference[0] = pass_by_reference[0] * ten_times
+    pass_by_reference[0] = pass_by_reference[0] + 0.5
+    pass_by_reference[0] = int(pass_by_reference[0])
+    pass_by_reference[0] = pass_by_reference[0] / ten_times
 
 
 def main():
-    # I calculate circumference
+    # this function gets a number and calls the add_one function
 
+    pass_by_reference = []
     # input
-    radius = int(input("Enter radius of the circle in mm: "))
-
-    # process
-    circumference = constants.TAU * radius
-
-    # output
-    print("Circumference is {} mm.".format(circumference))
-    print("\nDone.")
+    str_decimals_number = input("Input number of decimals: ")
+    str_number = input("Input number: ")
+    try:
+        number = float(str_number)
+        decimals_number = int(str_decimals_number)
+        pass_by_reference.append(number)
+        rounder(pass_by_reference, decimals_number)
+        print("\nRounded number is: {0}".format(pass_by_reference[0]))
+    except Exception:
+        print("\nInvalid Input")
+    finally:
+        print("\nDone.")
 
 
 if __name__ == "__main__":
